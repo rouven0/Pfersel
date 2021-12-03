@@ -157,5 +157,7 @@ async def rescue(ctx):
 
 check_bump.start()
 bot.load_extension("welcome")
+bot.load_extension("pin")
+
 
 bot.run("ODY4MTA0MzM2Mzk0MjkzMjcx.YPqzKg.YDcWCyM9BOszebhzfjXx9TeaQlY")
