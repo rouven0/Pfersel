@@ -9,7 +9,7 @@ class Welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        if "herzlich willkommen <:" in str.lower(message.content):
+        if "herzlich willkommen <" in str.lower(message.content):
             await message.channel.send(
                 "Herzlich Willkommen! \n"
                 "Sieh dich in Ruhe um, gib dir in den <#749718475001430019> deine Interessen und Fachgebiete.\n"
@@ -21,9 +21,7 @@ class Welcome(commands.Cog):
             )
         if "😛" in str.lower(message.content):
             await message.add_reaction(self.bot.get_emoji(788347876601364532))
-        if "guten morgen" in str.lower(message.content) and message.author.id == 158573690081116160:
-            await message.channel.send("Du siehst furchtbar aus")
-        if re.match("^\\[[\\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
+        if re.match(r"^\[[\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
             name = message.content[1 : message.content.find("]")]
             thread = await message.channel.create_thread(name=f"Feedback zu {name}", message=message)
             await thread.send(
