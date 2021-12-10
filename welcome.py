@@ -19,8 +19,10 @@ class Welcome(commands.Cog):
                 "Füge gerne Links zu Twitch und Sozialen Netzwerken an. "
                 "Bei allen Fragen stehen die Admins und Moderatoren jederzeit zu Verfügung."
             )
-        if "😛" in str.lower(message.content):
-            await message.add_reaction(self.bot.get_emoji(788347876601364532))
+        if "betatest" in str.lower(message.content).replace(" ", ""):
+            await message.channel.send(
+                "Obacht, derzeit gehen scammer umher, die Schadsoftware als angebliche Testversionen bewerben. Bitte öffne Programme und binaries nur von Leuten, denen du vertraust."
+            )
         if re.match(r"^\[[\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
             name = message.content[1 : message.content.find("]")]
             thread = await message.channel.create_thread(name=f"Feedback zu {name}", message=message)
