@@ -1,5 +1,7 @@
 import re
+import discord
 from discord.ext import commands
+import datetime
 
 
 class Welcome(commands.Cog):
@@ -31,6 +33,17 @@ class Welcome(commands.Cog):
                 "Vielen Dank, dass du mit uns dein Projekt geteilt hast. "
                 "Dieser Thread ist für feedback und Gespräche über dein Projekt gedacht. Viel Spaß!"
             )
+
+    @commands.Cog.listener()
+    async def on_message_delete(self, message):
+        if message.guild.id != 681868752681304066:
+            return
+        channel = self.bot.get_channel(922586955546509342)
+        embed = discord.Embed(title="Nachricht gelöscht", colour=discord.Colour.green(), description=message.content)
+        embed.set_author(name=f"Nachricht von {message.author}", icon_url=message.author.avatar_url)
+        embed.add_field(name="Kanal", value=f"<#{message.channel.id}>")
+        embed.timestamp = datetime.datetime.now()
+        await channel.send(f"<@{message.author.id}> <#{message.channel.id}>", embed=embed)
 
 
 def setup(bot):
