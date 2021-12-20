@@ -25,14 +25,14 @@ class Welcome(commands.Cog):
             await message.channel.send(
                 "Obacht, derzeit gehen scammer umher, die Schadsoftware als angebliche Testversionen bewerben. Bitte öffne Programme und binaries nur von Leuten, denen du vertraust."
             )
-        if re.match(r"^\[[\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
-            name = message.content[1 : message.content.find("]")]
-            thread = await message.channel.create_thread(name=f"Feedback zu {name}", message=message)
-            await thread.send(
-                f"Servus {message.author.name} <:GS:742287169787396126> "
-                "Vielen Dank, dass du mit uns dein Projekt geteilt hast. "
-                "Dieser Thread ist für feedback und Gespräche über dein Projekt gedacht. Viel Spaß!"
-            )
+        # if re.match(r"^\[[\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
+        # name = message.content[1 : message.content.find("]")]
+        # thread = await message.channel.create_thread(name=f"Feedback zu {name}", message=message)
+        # await thread.send(
+        # f"Servus {message.author.name} <:GS:742287169787396126> "
+        # "Vielen Dank, dass du mit uns dein Projekt geteilt hast. "
+        # "Dieser Thread ist für feedback und Gespräche über dein Projekt gedacht. Viel Spaß!"
+        # )
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
