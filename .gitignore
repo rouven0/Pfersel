@@ -3,7 +3,8 @@ __pycache__
 
 # sensitive files
 .env
-players.db
+bumpers.db
+next_bump.txt
 
 # log and temp files
 *.swp
