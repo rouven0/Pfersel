@@ -25,6 +25,12 @@ class Welcome(commands.Cog):
             await message.channel.send(
                 "Obacht, derzeit gehen scammer umher, die Schadsoftware als angebliche Testversionen bewerben. Bitte öffne Programme und binaries nur von Leuten, denen du vertraust."
             )
+        if message.author.id == 534589798267224065:
+            # print(message.embed.title)
+            print(message.embeds[0].title)
+
+            if "Thank you for using ActivityRank!" in message.embeds[0].title:
+                await message.delete()
         # if re.match(r"^\[[\w ]+]", str.lower(message.content)) and message.channel.id == 748189945943818272:
         # name = message.content[1 : message.content.find("]")]
         # thread = await message.channel.create_thread(name=f"Feedback zu {name}", message=message)
@@ -37,6 +43,9 @@ class Welcome(commands.Cog):
     @commands.Cog.listener()
     async def on_message_delete(self, message):
         if message.guild.id != 681868752681304066:
+            return
+        if message.author.id == 534589798267224065:
+            # ignore the activityrank deletions
             return
         channel = self.bot.get_channel(922586955546509342)
         embed = discord.Embed(title="Nachricht gelöscht", colour=discord.Colour.green(), description=message.content)

@@ -4,9 +4,7 @@ import logging
 
 import config
 
-bot = commands.Bot(
-    command_prefix=["!d ", "!D ", "mana "], help_command=None, case_insensitive=True, strip_after_prefix=True
-)
+bot = commands.Bot(command_prefix=["mana "], help_command=None, case_insensitive=True, strip_after_prefix=True)
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
