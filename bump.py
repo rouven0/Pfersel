@@ -1,9 +1,7 @@
 from time import time
-import logging
 import discord
 from discord.ext import commands
 from discord.ext import tasks
-from discord.ext.commands.errors import MissingRequiredArgument
 import re
 
 import bumpers
@@ -63,33 +61,25 @@ class Bump(commands.Cog):
             time_file.write(str(0))
             time_file.close()
 
-    @commands.command()
-    async def ping(self, ctx, toggle: str):
+    @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
+    async def ping(self, ctx, toggle: bool):
+        """Willst du bei remindern gepingt werden?"""
         try:
             bumper = bumpers.get(ctx.author.id)
         except bumpers.BumperNotRegistered:
-            await ctx.channel.send("Du musst mindestens einmal gebumpt haben, um diesen Command zu benutzen")
+            await ctx.respond("Du musst mindestens einmal gebumpt haben, um diesen Command zu benutzen")
             return
 
-        if toggle in ["on", "enable"]:
+        if toggle:
             bumpers.enable_ping(bumper)
-            await ctx.reply("Dein Ping wurde aktiviert")
-        elif toggle in ["off", "disable"]:
+            await ctx.respond("Dein Ping wurde aktiviert")
+        else:
             bumpers.disable_ping(bumper)
-            await ctx.reply("Dein Ping wurde deaktiviert")
-        else:
-            await ctx.channel.send("**Syntax:** mana ping [on/off]")
+            await ctx.respond("Dein Ping wurde deaktiviert")
 
-    @commands.Cog.listener()
-    async def on_command_error(self, ctx, error):
-        if isinstance(error, MissingRequiredArgument):
-            # angepasst auf den ping command
-            await ctx.channel.send("**Syntax:** mana ping [on/off]")
-        else:
-            logging.error(error)
-
-    @commands.command()
+    @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
     async def next(self, ctx):
+        """Nächster bump"""
         time_file = open("./next_bump.txt", "r")
         next_bump = int(time_file.readline())
         time_file.close()
@@ -97,10 +87,11 @@ class Bump(commands.Cog):
             msg = "Der nächste bump ist **JETZT**"
         else:
             msg = f"Der nächste bump ist <t:{next_bump}:t>"
-        await ctx.channel.send(embed=discord.Embed(description=msg, colour=discord.Colour.green()))
+        await ctx.respond(embed=discord.Embed(description=msg, colour=discord.Colour.green()))
 
-    @commands.command()
+    @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
     async def top(self, ctx):
+        """Die ehrenwertesten bumper"""
         top_content = ""
         top_tuple = bumpers.get_top()
         total_bumps = 0
@@ -111,9 +102,9 @@ class Bump(commands.Cog):
             title="Manasoup top list", description=top_content, colour=discord.Colour.dark_green()
         )
         top_embed.set_footer(text=f"Bumps insgesamt: {total_bumps}")
-        await ctx.channel.send(embed=top_embed)
+        await ctx.respond(embed=top_embed)
 
-    @commands.command()
+    @commands.slash_command(guild_ids=[886583607806787604])
     async def rescue(self, ctx):
         if ctx.author.id not in [235046787122069504, 692796548282712074]:
             return
