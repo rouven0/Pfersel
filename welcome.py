@@ -27,7 +27,6 @@ class Welcome(commands.Cog):
             )
         if message.author.id == 534589798267224065:
             # print(message.embed.title)
-            print(message.embeds[0].title)
 
             if "Thank you for using ActivityRank!" in message.embeds[0].title:
                 await message.delete()

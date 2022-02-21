@@ -37,6 +37,14 @@ class Bump(commands.Cog):
                         description=f"Der nächste bump ist <t:{next_bump}:R>", colour=discord.Colour.green()
                     )
                 )
+                return
+            match = re.match(r".*noch (\d{1,3}) Minute", message.embeds[0].description)
+            if match:
+                next_bump = round(time()) + int(match.groups()[0]) * 60
+                time_file = open("./next_bump.txt", "w")
+                time_file.write(str(next_bump))
+                time_file.close()
+                await message.add_reaction("🕙")
 
     @tasks.loop(seconds=2)
     async def check_bump(self):
