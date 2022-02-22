@@ -24,6 +24,7 @@ async def on_ready():
 bot.load_extension("welcome")
 bot.load_extension("bump")
 bot.load_extension("tags")
+bot.load_extension("quotes")
 
 
 bot.run("ODY4MTA0MzM2Mzk0MjkzMjcx.YPqzKg.YDcWCyM9BOszebhzfjXx9TeaQlY")

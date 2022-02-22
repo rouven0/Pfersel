@@ -12,6 +12,12 @@ class Tags(commands.Cog):
         with open("./codeblocks.md", "r") as file:
             await ctx.respond(file.read())
 
+    # @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
+    # async def stream(self, ctx):
+    # """Anleitung um Programmcode schön darzustellen"""
+    # with open("./stream.md", "r") as file:
+    # await ctx.respond(file.read())
+
 
 def setup(bot):
     bot.add_cog(Tags(bot))

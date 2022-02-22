@@ -1,9 +1,8 @@
 from dataclasses import dataclass
-import sqlite3
+import database
 
-
-__con__ = sqlite3.connect("./bumpers.db")
-__cur__ = __con__.cursor()
+__con__ = database.__con__
+__cur__ = database.__cur__
 
 
 @dataclass()
