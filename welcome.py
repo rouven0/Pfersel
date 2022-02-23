@@ -41,6 +41,7 @@ class Welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
+        print(1)
         if message.guild.id != 681868752681304066:
             return
         if message.author.id == 534589798267224065:
@@ -48,7 +49,7 @@ class Welcome(commands.Cog):
             return
         channel = self.bot.get_channel(922586955546509342)
         embed = discord.Embed(title="Nachricht gelöscht", colour=discord.Colour.green(), description=message.content)
-        embed.set_author(name=f"Nachricht von {message.author}", icon_url=message.author.avatar_url)
+        embed.set_author(name=f"Nachricht von {message.author}", icon_url=message.author.avatar)
         embed.add_field(name="Kanal", value=f"<#{message.channel.id}>")
         embed.timestamp = datetime.datetime.now()
         await channel.send(f"<@{message.author.id}> <#{message.channel.id}>", embed=embed)
