@@ -41,7 +41,6 @@ class Welcome(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_delete(self, message):
-        print(1)
         if message.guild.id != 681868752681304066:
             return
         if message.author.id == 534589798267224065:
