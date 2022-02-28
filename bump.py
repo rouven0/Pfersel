@@ -62,7 +62,7 @@ class Bump(commands.Cog):
             await bump_channel.send(
                 message,
                 embed=discord.Embed(
-                    title="Es ist wieder Zeit für einen Bump", description="!d bump", colour=discord.Colour.green()
+                    title="Es ist wieder Zeit für einen Bump", description="/bump", colour=discord.Colour.green()
                 ),
             )
             time_file = open("./next_bump.txt", "w")
