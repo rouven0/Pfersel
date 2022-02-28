@@ -19,7 +19,7 @@ class Bump(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if message.author.id == 302050872383242240:
-            match = re.match(r"<@!*(\d+)>.*:thumbsup:", message.embeds[0].description)
+            match = re.match(r"<@!*(\d+)>.*!", message.embeds[0].description)
             if match:
                 bumper_id = int(match.groups()[0])
                 next_bump = round(time()) + 7200
