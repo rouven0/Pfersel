@@ -1,5 +1,6 @@
 from time import time
 import discord
+from discord.enums import MessageType
 from discord.ext import commands
 from discord.ext import tasks
 import re
@@ -20,8 +21,10 @@ class Bump(commands.Cog):
     async def on_message(self, message):
         if message.author.id == 302050872383242240:
             match = re.match(r"<@!*(\d+)>.*!", message.embeds[0].description)
-            if match:
-                bumper_id = int(match.groups()[0])
+            if match or (
+                message.type == MessageType.application_command and "Bump erfolgreich" in message.embeds[0].description
+            ):
+                bumper_id = int(match.groups()[0]) if match else message.interaction.user.id
                 next_bump = round(time()) + 7200
                 time_file = open("./next_bump.txt", "w")
                 time_file.write(str(next_bump))
