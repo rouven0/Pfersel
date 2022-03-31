@@ -1,5 +1,6 @@
 [Unit]
 Description=Manasoup bump reminder
+After=network-online.target
 
 [Service]
 User=USER

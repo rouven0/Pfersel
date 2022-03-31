@@ -5,24 +5,26 @@ install:
 	@venv/bin/pip install -r requirements.txt
 	@echo Done.
 	@echo Setting up the systemd service...
-	@sed -i 's|WORKINGDIRECTORY|'$(PWD)'|g' ManasoupBumpReminder.service
-	@sed -i 's|USER|'$(USER)'|g' ManasoupBumpReminder.service
-	@sudo cp ./ManasoupBumpReminder.service /etc/systemd/system
+	@sed -i 's|WORKINGDIRECTORY|'$(PWD)'|g' Pfersel.service
+	@sed -i 's|USER|'$(USER)'|g' Pfersel.service
+	@sudo cp ./Pfersel.service /etc/systemd/system
 	@sudo systemctl daemon-reload
+	@sudo systemctl enable Pfersel.service
 	@echo Done. The service is ready to be started
 
 uninstall:
 	@echo Removing systemd service...
-	@sed -i 's|'$(PWD)'|WORKINGDIRECTORY|g' ManasoupBumpReminder.service
-	@sed -i 's|'$(USER)'|USER|g' ManasoupBumpReminder.service
-	@sudo rm /etc/systemd/system/ManasoupBumpReminder.service
+	@sudo systemctl disable Pfersel.service
+	@sed -i 's|'$(PWD)'|WORKINGDIRECTORY|g' Pfersel.service
+	@sed -i 's|'$(USER)'|USER|g' Pfersel.service
+	@sudo rm /etc/systemd/system/Pfersel.service
 	@sudo systemctl daemon-reload
 	@echo Done.
 
 start:
-	@sudo systemctl start ManasoupBumpReminder.service
+	@sudo systemctl start Pfersel.service
 	@echo Service started
 
 stop:
-	@sudo systemctl stop ManasoupBumpReminder.service
+	@sudo systemctl stop Pfersel.service
 	@echo Service stopped
