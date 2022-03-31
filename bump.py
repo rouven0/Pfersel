@@ -101,7 +101,7 @@ class Bump(commands.Cog):
         await ctx.respond(embed=discord.Embed(description=msg, colour=discord.Colour.green()))
 
     @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
-    async def top(self, ctx):
+    async def ranklist(self, ctx):
         """Die ehrenwertesten bumper"""
         top_content = ""
         top_tuple = bumpers.get_top()
