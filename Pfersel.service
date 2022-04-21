@@ -3,7 +3,6 @@ Description=Manasoup bump reminder
 After=network-online.target
 
 [Service]
-User=USER
 WorkingDirectory=WORKINGDIRECTORY
 ExecStart=WORKINGDIRECTORY/venv/bin/python3 bot.py
 
