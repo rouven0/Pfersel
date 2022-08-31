@@ -3,7 +3,9 @@ import logging
 
 import config
 
-bot = discord.Bot()
+intents = discord.Intents.default()
+intents.message_content = True
+bot = discord.Bot(intents=intents)
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
