@@ -41,13 +41,6 @@ class Bump(commands.Cog):
                     )
                 )
                 return
-            match = re.match(r".*noch (\d{1,3}) Minute", message.embeds[0].description)
-            if match:
-                next_bump = round(time()) + int(match.groups()[0]) * 60
-                time_file = open("./next_bump.txt", "w")
-                time_file.write(str(next_bump))
-                time_file.close()
-                await message.add_reaction("🕙")
 
     @tasks.loop(seconds=2)
     async def check_bump(self):
@@ -63,10 +56,7 @@ class Bump(commands.Cog):
             for user in pinged:
                 message += f" <@{user[0]}>"
             await bump_channel.send(
-                message,
-                embed=discord.Embed(
-                    title="Es ist wieder Zeit für einen Bump", description="/bump", colour=discord.Colour.green()
-                ),
+                message + "\n\n**Es ist wieder Zeit für einen Bump**\n\n</bump:947088344167366698>",
             )
             time_file = open("./next_bump.txt", "w")
             time_file.write(str(0))
