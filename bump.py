@@ -87,7 +87,7 @@ class Bump(commands.Cog):
         if next_bump == 0:
             msg = "Der nächste bump ist **JETZT**"
         else:
-            msg = f"Der nächste bump ist <t:{next_bump}:T>"
+            msg = f"Der nächste bump ist <t:{next_bump}:T> (<t:{next_bump}:R>)"
         await ctx.respond(embed=discord.Embed(description=msg, colour=discord.Colour.green()))
 
     @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
