@@ -14,7 +14,7 @@ class Welcome(commands.Cog):
         if "herzlich willkommen <" in str.lower(message.content):
             await message.channel.send(
                 "Herzlich Willkommen! \n"
-                "Sieh dich in Ruhe um, gib dir in den <#749718475001430019> deine Interessen und Fachgebiete.\n"
+                "Sieh dich in Ruhe um, gib dir in <id:customize> deine Interessen und Fachgebiete.\n"
                 "Fülle <#748189945943818272> mit deinen Ideen und aktuellen Projekten. "
                 "Erzähle gerne ausführlich über dich in der <#742276310134685718>. "
                 "Eigenwerbung ist erlaubt, vermeidet nur bitte Spam. "
