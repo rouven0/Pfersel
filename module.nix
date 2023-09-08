@@ -33,7 +33,7 @@ in
     };
     users.groups.pfersel = { };
     systemd.tmpfiles.rules = [
-      "d '${cfg.dataDir}' 0700 ${cfg.user} ${cfg.group} - -"
+      "d '${cfg.dataDir}' 0700 pfersel pfersel - -"
     ];
 
     systemd.services.pfersel = {
