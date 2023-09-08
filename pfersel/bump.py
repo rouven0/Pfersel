@@ -5,7 +5,7 @@ from discord.ext import commands
 from discord.ext import tasks
 import re
 
-import bumpers
+from pfersel import bumpers
 
 
 class Bump(commands.Cog):

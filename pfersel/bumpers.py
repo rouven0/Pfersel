@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-import database
+from pfersel import database
 
 __con__ = database.__con__
 __cur__ = database.__cur__

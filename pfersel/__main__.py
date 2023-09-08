@@ -1,7 +1,8 @@
 import discord
 import logging
 
-import config
+from pfersel import config
+from os import getenv
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -11,6 +12,8 @@ logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging.Formatter(config.LOG_FORMAT, datefmt="%Y-%m-%d %H:%M:%S"))
 logger.addHandler(console_handler)
+
+BOT_TOKEN = open(getenv("TOKEN_FILE", default="/dev/null"), "r").readline().strip()
 
 
 @bot.event
@@ -22,10 +25,10 @@ async def on_ready():
     )
 
 
-bot.load_extension("welcome")
-bot.load_extension("bump")
-bot.load_extension("tags")
-bot.load_extension("quotes")
+bot.load_extension("pfersel.welcome")
+bot.load_extension("pfersel.bump")
+bot.load_extension("pfersel.tags")
+bot.load_extension("pfersel.quotes")
 
 
-bot.run("ODY4MTA0MzM2Mzk0MjkzMjcx.YPqzKg.YDcWCyM9BOszebhzfjXx9TeaQlY")
+bot.run(BOT_TOKEN) 

@@ -2,7 +2,7 @@ from random import randint
 import discord
 from discord.ext import commands
 from discord.commands import Option, OptionChoice
-import database
+from pfersel import database
 
 con = database.__con__
 cur = database.__cur__
