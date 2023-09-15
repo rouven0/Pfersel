@@ -1,4 +1,5 @@
 from discord.ext import commands
+from pfersel import config
 
 
 class Tags(commands.Cog):
@@ -9,7 +10,7 @@ class Tags(commands.Cog):
     @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])
     async def codeblocks(self, ctx):
         """Anleitung um Programmcode schön darzustellen"""
-        with open("./codeblocks.md", "r") as file:
+        with open(config.BASE_PATH + "/codeblocks.md", "r") as file:
             await ctx.respond(file.read())
 
     # @commands.slash_command(guild_ids=[886583607806787604, 681868752681304066])

@@ -26,20 +26,6 @@ class Welcome(commands.Cog):
                 "Obacht, derzeit gehen scammer umher, die Schadsoftware als angebliche Testversionen bewerben. Bitte öffne Programme und binaries nur von Leuten, denen du vertraust."
             )
 
-    @commands.Cog.listener()
-    async def on_message_delete(self, message):
-        if message.guild.id != 681868752681304066:
-            return
-        if message.author.id == 534589798267224065:
-            # ignore the activityrank deletions
-            return
-        channel = self.bot.get_channel(922586955546509342)
-        embed = discord.Embed(title="Nachricht gelöscht", colour=discord.Colour.green(), description=message.content)
-        embed.set_author(name=f"Nachricht von {message.author}", icon_url=message.author.avatar)
-        embed.add_field(name="Kanal", value=f"<#{message.channel.id}>")
-        embed.timestamp = datetime.datetime.now()
-        await channel.send(f"<@{message.author.id}> <#{message.channel.id}>", embed=embed)
-
 
 def setup(bot):
     bot.add_cog(Welcome(bot))
