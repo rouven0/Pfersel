@@ -1,10 +1,10 @@
-{ buildPythonPackage, fetchPypi, python310Packages, python, ... }:
+{ buildPythonPackage, fetchPypi, python311Packages, python, ... }:
 
 buildPythonPackage {
   name = "Pfersel";
   src = ./pfersel;
 
-  propagatedBuildInputs = with python310Packages; [
+  propagatedBuildInputs = with python311Packages; [
 
     (buildPythonPackage
       rec {

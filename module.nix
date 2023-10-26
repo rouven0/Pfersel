@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.services.pfersel;
-  appEnv = pkgs.python3.withPackages (p: with p; [ (pkgs.python310Packages.callPackage ./default.nix { }) ]);
+  appEnv = pkgs.python311.withPackages (p: with p; [ (pkgs.python311Packages.callPackage ./default.nix { }) ]);
 in
 {
   options.services.pfersel = {
