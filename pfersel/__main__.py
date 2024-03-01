@@ -13,7 +13,7 @@ console_handler = logging.StreamHandler()
 console_handler.setFormatter(logging.Formatter(config.LOG_FORMAT, datefmt="%Y-%m-%d %H:%M:%S"))
 logger.addHandler(console_handler)
 
-BOT_TOKEN = open(getenv("CREDENTIALS_DIRECTORY", default="/dev/null") + "discord-token", "r").readline().strip()
+BOT_TOKEN = open(getenv("CREDENTIALS_DIRECTORY", default="/dev/null") + "/discord-token", "r").readline().strip()
 
 
 @bot.event
