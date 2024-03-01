@@ -44,6 +44,7 @@ in
         TOKEN_FILE = cfg.discord.tokenFile;
       };
       serviceConfig = {
+        LoadCredential = "discord-token:${cfg.discord.tokenFile}";
         WorkingDirectory = cfg.dataDir;
         ExecStart = "${appEnv}/bin/python -m pfersel";
         User = "pfersel";
