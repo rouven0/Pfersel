@@ -11,3 +11,6 @@ next_bump.txt
 
 # virtual environment
 venv/
+
+# nix stuff
+result

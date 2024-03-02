@@ -9,7 +9,7 @@ buildPythonPackage {
     (buildPythonPackage
       rec {
         pname = "py-cord";
-        version = "2.4.1";
+        version = "2.5.0";
         propagatedBuildInputs = [
           aiohttp
           aiosignal
@@ -24,7 +24,7 @@ buildPythonPackage {
 
         src = fetchPypi {
           inherit pname version;
-          sha256 = "sha256-AmbJ2anSOXYioOXq0JgmaQ5oi6PPFMRwFnuB5s0tilY=";
+          sha256 = "sha256-+vCK9dperC7T0cikPYMH1aHj8BYC3vKDMwydLN4LEWI=";
         };
         doCheck = false;
       })
